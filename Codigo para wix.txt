@@ -1,0 +1,250 @@
+<!-- 
+INSTRUCCIONES (bórralas si quieres):
+1) Copia TODO este código y pégalo en Wix → Agregar → Insertar → Código incrustado → HTML iframe → "Introducir código".
+2) Para cada tarjeta, reemplaza: NOMBRE_COLAB, MODELO/TEMA, PRECIO y URL_DE_IMAGEN.
+3) Puedes duplicar <article class="card"> para agregar más colaboraciones.
+4) Opcional: cambia el color de acento en :root → --accent.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Colaboraciones Adidas</title>
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #151515;
+      --text: #eaeaea;
+      --muted: #b5b5b5;
+      --accent: #00d084; /* color acento */
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg); color: var(--text);
+      padding: 22px;
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .title {
+      display: flex; align-items: end; justify-content: space-between; gap: 16px;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: clamp(22px, 4vw, 34px); margin: 0; letter-spacing: .3px; }
+    .hint { color: var(--muted); font-size: 14px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    /* responsive columnas */
+    @media (max-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 641px) and (max-width: 900px) { .grid { grid-template-columns: repeat(6, 1fr); } }
+    @media (min-width: 901px) { .grid { grid-template-columns: repeat(12, 1fr); } }
+
+    .card {
+      grid-column: span 4; /* 3 por fila en desktop */
+      background: linear-gradient(180deg, #1a1a1a, var(--card));
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid #222;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.35); border-color: #2a2a2a; }
+
+    .thumb {
+      position: relative; aspect-ratio: 4/3; background: #0f0f0f;
+      display: grid; place-items: center; overflow: hidden;
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .badge {
+      position: absolute; top: 12px; left: 12px; padding: 6px 10px; font-size: 12px; letter-spacing: .3px;
+      background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.12); color: #fff; border-radius: 999px;
+      backdrop-filter: blur(6px);
+    }
+
+    .body { padding: 14px 14px 16px; display: grid; gap: 10px; }
+    .name { font-size: 16px; margin: 0; line-height: 1.25; }
+    .model { color: var(--muted); font-size: 14px; margin: 0; }
+
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .price { font-weight: 700; font-size: 18px; }
+    .cta {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px;
+      background: var(--accent); color: #032214; border: 0; border-radius: 999px; cursor: pointer; font-weight: 700;
+      text-decoration: none; transition: filter .2s ease;
+    }
+    .cta:hover { filter: brightness(0.95); }
+
+    /* Fallback si una imagen no carga */
+    .thumb::after{ content: "Imagen"; position: absolute; color: #555; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">
+      <h1>Colaboraciones de adidas</h1>
+      <div class="hint">Ejemplos — sustituye imágenes, nombres y precios por los tuyos.</div>
+    </div>
+
+    <section class="grid">
+      <!-- DUPLICA ESTE BLOQUE "card" PARA AGREGAR MÁS COLABORACIONES -->
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x Bad Bunny – Campus" onerror="this.style.display='none'">
+          <span class="badge">Bad Bunny</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x Bad Bunny</h3>
+          <p class="model">Campus / Response CL / Forum</p>
+          <div class="row">
+            <span class="price">L 4,200</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x Wales Bonner – Samba" onerror="this.style.display='none'">
+          <span class="badge">Wales Bonner</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x Wales Bonner</h3>
+          <p class="model">Samba / SL72 / Spezial</p>
+          <div class="row">
+            <span class="price">L 3,800</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x Gucci – Gazelle" onerror="this.style.display='none'">
+          <span class="badge">Gucci</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x Gucci</h3>
+          <p class="model">Gazelle / ZX</p>
+          <div class="row">
+            <span class="price">L 12,500</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x Pharrell Williams – Hu" onerror="this.style.display='none'">
+          <span class="badge">Pharrell</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x Pharrell Williams</h3>
+          <p class="model">Humanrace/NMD Hu</p>
+          <div class="row">
+            <span class="price">L 5,200</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x PRADA – Superstar/Luna Rossa" onerror="this.style.display='none'">
+          <span class="badge">PRADA</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x PRADA</h3>
+          <p class="model">Superstar / Luna Rossa</p>
+          <div class="row">
+            <span class="price">L 15,900</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x BAPE – Superstar/NMD" onerror="this.style.display='none'">
+          <span class="badge">BAPE</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x BAPE</h3>
+          <p class="model">Superstar / NMD / Campus</p>
+          <div class="row">
+            <span class="price">L 4,800</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x LEGO – ZX 8000" onerror="this.style.display='none'">
+          <span class="badge">LEGO</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x LEGO</h3>
+          <p class="model">ZX 8000 / Ultraboost</p>
+          <div class="row">
+            <span class="price">L 3,200</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x Ivy Park – Ultraboost/Forum" onerror="this.style.display='none'">
+          <span class="badge">Ivy Park</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x Ivy Park</h3>
+          <p class="model">Ultraboost / Forum</p>
+          <div class="row">
+            <span class="price">L 3,900</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x Jonah Hill – Superstar" onerror="this.style.display='none'">
+          <span class="badge">Jonah Hill</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x Jonah Hill</h3>
+          <p class="model">Superstar</p>
+          <div class="row">
+            <span class="price">L 2,900</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb">
+          <img src="URL_DE_IMAGEN" alt="adidas x The Simpsons – ZX" onerror="this.style.display='none'">
+          <span class="badge">The Simpsons</span>
+        </div>
+        <div class="body">
+          <h3 class="name">adidas x The Simpsons</h3>
+          <p class="model">ZX / Superstar</p>
+          <div class="row">
+            <span class="price">L 3,400</span>
+            <a class="cta" href="#" target="_blank" rel="noopener">Comprar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- FIN DE EJEMPLOS -->
+    </section>
+
+    <p class="hint" style="margin-top:14px">Nota: Los precios son de ejemplo ("Precio desde"). Ajusta a tu moneda/catálogo real.</p>
+  </div>
+</body>
+</html>
